@@ -1,13 +1,13 @@
 library(tidyverse)
 # 元データ読み込み
-d <- read.csv("/home/wildlife/TrainingMdetClassifire/data/ensyurin_MachineLearning/detector_output-annotation_data.csv")
+d <- read.csv("/home/wildlife/TrainingMdetClassifier/data/ensyurin_MachineLearning/detector_output-annotation_data.csv")
 head(d)
 xtabs(~category,d)
 xtabs(~category+learning_phase,d)
 
 # まずpathを入れ替える
-# "/home/data_ssd/photodata/"を"/home/wildlife/TrainingMdetClassifire/data/ensyurin_MachineLearning/"に差し替え
-new_path <- gsub("/home/data_ssd/photodata/","/home/wildlife/TrainingMdetClassifire/data/ensyurin_MachineLearning/",d$crop_path)
+# "/home/data_ssd/photodata/"を"~/data/ensyurin_MachineLearning/"に差し替え
+new_path <- gsub("/home/data_ssd/photodata/","/home/wildlife/TrainingMdetClassifier/data/ensyurin_MachineLearning/",d$crop_path)
 
 new_dset <- data.frame(learning_phase = d$learning_phase,
                         category = d$category,
@@ -37,4 +37,4 @@ colnames(new_dset2)[3] <- "crop_path"
 
 
 # data/に書き出す。
-write.csv(new_dset2,"data/detector_output-annotation_data_250519.csv")
+write.csv(new_dset2,"data/detector_output-annotation_data_250530.csv")
