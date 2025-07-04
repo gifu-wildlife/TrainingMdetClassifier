@@ -1,3 +1,5 @@
+(in [`English`](README_E.md))
+
 # TrainingMdetClassifier
 
 MegaDetectorで切り出されたカメラトラップ画像を分類するためのディープラーニングモデル訓練フレームワーク  
