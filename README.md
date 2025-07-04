@@ -1,4 +1,4 @@
-(in [`English`](README_E.md))
+(in [`English`](README_en.md))
 
 # TrainingMdetClassifier
 
