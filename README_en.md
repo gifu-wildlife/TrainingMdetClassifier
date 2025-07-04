@@ -4,7 +4,7 @@ A deep learning model training framework for classifying cropped camera trap ima
 
 ## Overview
 
-TrainingMdetClassifier is a deep learning training repository designed to classify images cropped by `MegaDetector`[https://doi.org/10.48550/arXiv.1907.06772].
+TrainingMdetClassifier is a deep learning training repository designed to classify images cropped by [MegaDetector](https://doi.org/10.48550/arXiv.1907.06772).
 
 Key features:
 

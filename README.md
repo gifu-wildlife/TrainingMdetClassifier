@@ -6,7 +6,7 @@ MegaDetectorで切り出されたカメラトラップ画像を分類するた�
 
 ## 概要
 
-TrainingMdetClassifierは、`MegaDetector`[https://doi.org/10.48550/arXiv.1907.06772]によって切り出された画像を分類するための深層学習モデル訓練用リポジトリです。
+TrainingMdetClassifierは、[MegaDetector](https://doi.org/10.48550/arXiv.1907.06772)によって切り出された画像を分類するための深層学習モデル訓練用リポジトリです。
 
 主な特徴:
 
