@@ -1,10 +1,12 @@
+(in [`English`](README_en.md))
+
 # TrainingMdetClassifier
 
-野生動物の検出器画像を分類するためのディープラーニングモデル訓練フレームワーク
+MegaDetectorで切り出されたカメラトラップ画像を分類するためのディープラーニングモデル訓練フレームワーク  
 
 ## 概要
 
-TrainingMdetClassifierは、野生動物検出器によって切り出された画像を分類するための深層学習モデル訓練用リポジトリです。
+TrainingMdetClassifierは、[MegaDetector](https://doi.org/10.48550/arXiv.1907.06772)によって切り出された画像を分類するための深層学習モデル訓練用リポジトリです。
 
 主な特徴:
 
@@ -36,7 +38,7 @@ bash <conda-installer-name>-latest-Linux-x86_64.sh
 
 #### uv
 
-uvは、Pythonの依存関係を管理するためのrust製ツールです。
+`uv`は、Pythonの依存関係を管理するためのRust製ツールです。
 Pythonのインストールが別途必要となります．pyenvを使用する場合は[pyenvのインストール方法](docs/install_python.md)を参照してください。
 
 ```bash
@@ -52,27 +54,23 @@ winget install --id=astral-sh.uv  -e
 
 Package Managementのセクションで選択した方法に応じて、以下の手順で依存関係をインストールします。
 
-#### リポジトリのクローン
+#### Clone the repository / リポジトリのクローン
 
-リポジトリをクローンします．
+ローカル環境にリポジトリをクローンします．
 
 ```bash
 git clone https://github.com/gifu-wildlife/TrainingMdetClassifier.git
 cd TrainingMdetClassifier
 ```
 
-#### condaを使用する場合
-
-condaを使って依存関係をインストールします．
+#### condaによる環境構築
 
 ```bash
 conda env create -f environment.yml
 conda activate develop
 ```
 
-#### uvを使用する場合
-
-uvを使って依存関係をインストールします．
+#### uvによる環境構築
 
 ```bash
 # 開発環境を含めてインストール
@@ -91,7 +89,7 @@ uv sync --extras cpu
 
 ### データの準備
 
-分類用データセットは以下の形式のCSVファイルで準備します:
+分類用データセットは以下の形式のCSVファイルで準備します:  
 
 ```csv
 fullpath,crop_path,category,learning_phase
@@ -99,12 +97,12 @@ fullpath,crop_path,category,learning_phase
 /path/to/image2.jpg,/path/to/crop/image2.jpg,class2,0
 ```
 
-- fullpath: 元画像のパス
-- crop_path: 切り抜き画像のパス
-- category: クラスラベル
-- learning_phase: 0=訓練、1=検証、2=テスト
+- `fullpath`: 元画像のパス
+- `crop_path`: 切り抜き画像のパス
+- `category`: クラスラベル
+- `learning_phase`: 0=訓練、1=検証、2=テスト
 
-### モデルのトレーニング
+### Train the model / モデルのトレーニング
 
 ```bash
 # 基本的なトレーニングコマンド
@@ -117,15 +115,17 @@ python train.py experiment=detector_cls
 python train.py experiment=detector_cls optimizer.lr=0.001
 ```
 
-### モデルのテスト
+### Test the model / モデルのテスト
 
-WIP
+WIP  
+(under construction)
+
 <!-- ```bash
 # テストデータセットでモデルを評価
 python test.py experiment=detector_cls
 ``` -->
 
-### 予測の実行
+### Run prediction / 予測の実行
 
 ```bash
 # 新しい画像に対して予測を実行
@@ -134,15 +134,19 @@ python predict.py --data_source /path/to/images --log_dir logs/experiments/runs/
 
 主要な実験設定は`configs/experiment/`ディレクトリ内のYAMLファイルで定義されています。詳細は[`docs/configs.md`](docs/configs.md)を参照してください。
 
-## ライセンス
+## License / ライセンス
 
 MITライセンスの下で配布されています。詳細については[`LICENSE`](LICENSE)ファイルを参照してください。
 
+<!-- 
 ## 連絡先
 
 Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+ -->
 
+<!--
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+-->
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
