@@ -7,7 +7,7 @@
 # conda env create -f=environment.yml
 conda activate develop
 
-python train.py datamodule.data_source="/home/wildlife/git/TrainingMdetClassifier/data/detector_output-annotation_data_260213.csv" datamodule=detector num_epochs=50
+python train.py datamodule.data_source="/home/ando/git/TrainingMdetClassifier/data/detector_output-annotation_data_260215_stratified.csv" datamodule=detector num_epochs=50
 
 # testの実行。いくつかハードルがあった。
 # まず、configs/test.yamlが必要だったので、configs/train.yamlをコピペしてリネーム。
@@ -17,4 +17,4 @@ python train.py datamodule.data_source="/home/wildlife/git/TrainingMdetClassifie
 # src/testing_pipeline.pyのtorch.load()にweights_only=Falseを追記
 # これで以下のコードが通る。
 
-python test.py datamodule.data_source="/home/wildlife/TrainingMdetClassifier/data/detector_output-annotation_data_260213.csv" datamodule=detector ckpt_path=logs/experiments/runs/default/2026-02-13_16-21-36/checkpoints/best.pth
+python test.py datamodule.data_source="/home/ando/git/TrainingMdetClassifier/data/detector_output-annotation_data_260215_stratified.csv" datamodule=detector ckpt_path=logs/experiments/runs/default/2026-02-15_15-50-24/checkpoints/best.pth
