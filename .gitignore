@@ -192,5 +192,5 @@ copilot-instructions.md
 .memory
 
 
-# R scripts
-R/*
+# some private scripts
+R/
