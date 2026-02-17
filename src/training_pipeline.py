@@ -7,6 +7,9 @@ from omegaconf import DictConfig
 from torchmetrics import Accuracy, MaxMetric, MeanMetric
 from tqdm import tqdm
 
+# 260216挿入
+import csv
+
 try:
     from typing import Literal
 except ImportError:
@@ -30,6 +33,17 @@ def train(config: DictConfig) -> Optional[float]:
 
     ckpt_dir = Path("checkpoints")
     os.makedirs(ckpt_dir, exist_ok=True)
+
+    # 260216挿入ここから
+    metrics_path = ckpt_dir / "metrics.csv"
+
+    # ヘッダー作成（run開始時のみ）
+    with open(metrics_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            ["epoch", "train_loss", "val_loss", "train_acc", "val_acc"]
+        )
+    # 260216挿入ここまで
 
     log.info(f"Instantiating dataset <{config.datamodule._target_}>")
     datamodule = hydra.utils.instantiate(config.datamodule)
@@ -104,6 +118,20 @@ def train(config: DictConfig) -> Optional[float]:
                 "val_acc": val_acc.cpu().numpy(),
             }
         )
+
+        # 260216挿入ここから
+        with open(metrics_path, "a", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(
+                [
+                    epoch + 1,
+                    train_loss.item(),
+                    val_loss.item(),
+                    train_acc.item(),
+                    val_acc.item(),
+                ]
+            )
+        # 260216挿入ここまで
 
         # if is_best or epoch % config.get("checkpoint") == 0:
         # save checkpoint

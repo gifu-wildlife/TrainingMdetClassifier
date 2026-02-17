@@ -1,6 +1,6 @@
 library(tidyverse)
 # 元データ読み込み
-d <- read.csv("/home/wildlife/TrainingMdetClassifier/data/ensyurin_MachineLearning/detector_output-annotation_data.csv")
+d <- read.csv("/home/wildlife/TrainingMdetClassifier/data/ensyurin_MachineLearning/detector_output-annotation_data_250530.csv")
 head(d)
 xtabs(~category,d)
 xtabs(~category+learning_phase,d)

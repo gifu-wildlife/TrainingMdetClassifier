@@ -28,6 +28,9 @@ xtabs(~category,d)
 
 # 種別にlearning_phaseを適切数になるよう振り直す。
 
+data_list <- split(d, d$category)
+d_addNo <- map_dfr(data_list,function(x){x$No <- rep(c(0,0,0,1,2),length.out=nrow(x))})
+
 new_dset <- data.frame(learning_phase = d_addNo$No,
                         category = d_addNo$category,
                         crop_path = d_addNo$crop_path)

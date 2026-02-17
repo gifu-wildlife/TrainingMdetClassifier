@@ -190,3 +190,7 @@ cython_debug/
 # User specific files
 copilot-instructions.md
 .memory
+
+
+# R scripts
+R/*
